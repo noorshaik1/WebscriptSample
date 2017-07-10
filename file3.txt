@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Test Webscript</shortname>
+  <description>Test webscript that takes a noderef and a user</description>
+  <url>/test/simple?nodeRef={noderef}&user={user}</url>
+  <authentication>none</authentication>
+  <format default=''>argument</format>
+  <family>Alfresco Java-Backed WebScripts test</family>
+</webscript>

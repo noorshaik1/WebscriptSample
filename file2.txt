@@ -1,0 +1,4 @@
+<bean id='webscript.org.alfresco.test.get' 
+      class='org.alfresco.module.testscripts.TestWebScript'
+      parent='webscript'>
+</bean>

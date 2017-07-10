@@ -1,0 +1,29 @@
+package org.alfresco.module.testscripts;
+
+import java.io.IOException;
+import org.springframework.extensions.webscripts.AbstractWebScript;
+import org.springframework.extensions.webscripts.WebScriptException;
+import org.springframework.extensions.webscripts.WebScriptRequest;
+import org.springframework.extensions.webscripts.WebScriptResponse;
+
+public class TestWebScript extends AbstractWebScript
+{
+    public void execute(WebScriptRequest req, WebScriptResponse res)
+        throws IOException
+    {
+     try
+     {
+		NodeRef nodeRef = new NodeRef(req.getParameter("nodeRef"));
+		//authenticate as the system user
+		authenticationComponent.setSystemUserAsCurrentUser();
+		AccessStatus accessStatus = permissionService.hasPermission(sourceNodeRef, PermissionService.READ_PERMISSIONS);
+	 
+		Permissions p = new Permissions(u.getUserName(), nodeRef);
+		p.canReadProperties(permissionService.hasPermission(nodeRef,PermissionService.READ_PROPERTIES).equals(AccessStatus.ALLOWED));
+     }
+     catch(Exception e)
+     {
+      throw new WebScriptException('Exception in TestWebScript');
+     }
+    }    
+}
